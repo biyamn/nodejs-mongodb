@@ -36,12 +36,12 @@ app.get('/', (req, res) => {
 app.get('/write', (req, res) => {
   res.render('write');
   }); 
-  
+
 app.post('/write', (req, res) => {
   // request 안에 있는 내용을 처리
   // request.body
   const title = req.body.title;
-  const contents = req.body.contents;
+  const content = req.body.content;
   const date = req.body.date;
   
   // 데이터 저장
@@ -53,14 +53,14 @@ app.post('/write', (req, res) => {
   // request 데이터를 저장
   writings.push({
     title: title,
-    contents: contents,
+    content: content,
     date: date,
   });
 
   // data/writing.json에 저장하기
   fs.writeFileSync(filePath, JSON.stringify(writings));
 
-  res.render('detail', { title: title, contents: contents, data: date });
+  res.render('detail', { title: title, content: content, data: date });
 });
   
 app.get('/detail', (req, res) => {
