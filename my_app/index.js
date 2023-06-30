@@ -30,13 +30,19 @@ nunjucks.configure('views', {
 app.get('/', (req, res) => {
   const fileData = fs.readFileSync(filePath);
   const writings = JSON.parse(fileData);
-  console.log(writings);
   res.render('main', { list: writings })
 });
 
 app.get('/write', (req, res) => {
   res.render('write');
   }); 
+
+app.get('/base', (req, res) => {
+  readFile('ham.png', (err, data) => {
+    if(err) { res.send() }
+    res.send(data)
+  })
+})
 
 app.post('/write', (req, res) => {
   // request 안에 있는 내용을 처리
