@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
   <h1>상세 페이지</h1>
   <div>
-    <p>글 제목:{{ title }}</p>
-    <p>글 내용:{{ content }}</p>
-    <p>글 날짜:{{ data }}</p>
+    <p>제목:{{ title }}</p>
+    <p>내용:{{ content }}</p>
+    <p>날짜:{{ data }}</p>
   </div>
-  <a href="/main">메인</a>
-</body>
-</html>
+</div>
+{% endblock %}

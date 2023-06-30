@@ -36,14 +36,7 @@ app.get('/', (req, res) => {
 app.get('/write', (req, res) => {
   res.render('write');
   }); 
-
-app.get('/base', (req, res) => {
-  readFile('ham.png', (err, data) => {
-    if(err) { res.send() }
-    res.send(data)
-  })
-})
-
+  
 app.post('/write', (req, res) => {
   // request 안에 있는 내용을 처리
   // request.body
