@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
+  {% if detail %}
   <h1>상세 페이지</h1>
-  <div>
-    <p>제목:{{ title }}</p>
-    <p>내용:{{ content }}</p>
-    <p>날짜:{{ data }}</p>
-  </div>
-</div>
+    <p>제목:{{ detail.title }}</p>
+    <p>내용:{{ detail.content }}</p>
+    <a href="/edit/{{ detail.id }}">수정</a>
+    <a href="/delete">삭제</a>
+  {% else %}
+    <h1>상세 페이지 수정</h1>
+    <form action="/edit/{{ edit.id }}" method="post">
+      <p>제목: <input type="text" name="title" value="{{ edit.title }}"></p>
+      <p>내용: <input type="text" name="content" value="{{ edit.content }}"></p>
+      <input type="submit" value="수정 완료">
+    </form>
+  {% endif %}
 {% endblock %}
